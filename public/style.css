@@ -1,0 +1,357 @@
+/* === RESET === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #f5f7fa;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* === HEADER === */
+header {
+  background: linear-gradient(90deg, #004aad, #007bff);
+  color: white;
+  padding: 20px 10%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #ffd43b;
+}
+
+/* === HERO PRINCIPAL === */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 85vh;
+  background: url("img/portada.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  max-width: 700px;
+  z-index: 2;
+}
+
+.hero-content h2 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  color: #f0f0f0;
+}
+
+.hero .btn {
+  background: #ffd43b;
+  color: #004aad;
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.hero .btn:hover {
+  background: #ffcd00;
+  transform: scale(1.05);
+}
+
+/* === RESPONSIVE HERO === */
+@media (max-width: 768px) {
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+}
+
+
+/* === GRID PRODUCTOS === */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 40px 10%;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  margin: 10px;
+}
+
+.card p {
+  font-weight: bold;
+  margin: 0 10px 10px;
+  color: #004aad;
+}
+
+.card button {
+  width: 45%;
+  margin: 5px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card button:first-of-type {
+  background: #007bff;
+  color: white;
+}
+
+.card button:last-of-type {
+  background: #ff4d4d;
+  color: white;
+}
+
+.card button:hover {
+  opacity: 0.8;
+}
+
+/* === SECCIONES === */
+section {
+  padding: 20px 10%;
+}
+
+/* === FOOTER === */
+footer {
+  background: #004aad;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 30px;
+}
+
+/* === RESPONSIVE NAV === */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+}
+
+/* === LISTAS (Carrito y Favoritos) === */
+#carrito, #favoritos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 30px;
+}
+
+.empty {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #777;
+  margin-top: 50px;
+}
+
+/* === ADMIN PAGE === */
+.admin-container {
+  padding: 40px 8%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.formulario {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 30px;
+}
+
+.formulario h2 {
+  margin-bottom: 15px;
+  color: #004aad;
+  text-align: center;
+}
+
+.formulario form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.input-group, .input-check {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+
+.input-group label, .input-check label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.input-group input, .input-check input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0,123,255,0.3);
+}
+
+.formulario button {
+  width: 30%;
+  background: #004aad;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.formulario button:hover {
+  background: #006bff;
+}
+
+/* === TABLA === */
+.tabla-section {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 25px;
+}
+
+.tabla-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #004aad;
+}
+
+.tabla-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+th, td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background: #004aad;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background: #f4f8ff;
+}
+
+tr:hover {
+  background: #eaf2ff;
+  transition: 0.3s;
+}
+
+td button {
+  border: none;
+  background: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+td button:hover {
+  transform: scale(1.2);
+}
+
+/* === RESPONSIVE ADMIN === */
+@media (max-width: 768px) {
+  .input-group, .input-check {
+    width: 100%;
+  }
+
+  .formulario button {
+    width: 60%;
+  }
+}
+
