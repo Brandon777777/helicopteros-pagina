@@ -1,5 +1,5 @@
 let idEditando = null;
-const API_URL = '/helicopteros';
+const API_URL = 'https://api-helicopteros.onrender.com';
 
 // 🚁 Cargar lista de helicópteros
 async function cargarHelicopteros() {
