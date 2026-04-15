@@ -1,7 +1,7 @@
 let idEditando = null;
 
 // 🔥 API CORRECTA
-const API_URL = 'https://api-helicopteros-1.onrender.com/helicopteros';
+const API_URL = 'http://localhost:3000/helicopteros';
 
 console.log("JS cargado correctamente");
 
