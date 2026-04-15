@@ -2,45 +2,67 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Admin - Helicópteros</title>
+  <title>Admin Helicópteros</title>
 </head>
 <body>
 
-<h1>Panel Admin</h1>
+<h1>Admin Helicópteros</h1>
 
-<div class="formulario">
-  <input type="text" id="marca" placeholder="Marca">
-  <input type="text" id="modelo" placeholder="Modelo">
-  <input type="number" id="anio" placeholder="Año">
-  <input type="number" id="precio" placeholder="Precio">
-  <label>
-    Disponible
-    <input type="checkbox" id="disponible" checked>
-  </label>
+<input id="marca" placeholder="Marca">
+<input id="modelo" placeholder="Modelo">
+<input id="anio" placeholder="Año">
+<input id="precio" placeholder="Precio">
+<input type="checkbox" id="disponible" checked> Disponible
 
-  <!-- 🔥 BOTÓN CORREGIDO -->
-  <button onclick="agregarHelicoptero()">Agregar</button>
-</div>
+<button id="btnAgregar">Agregar</button>
 
-<h2>Lista de Helicópteros</h2>
+<h2>Lista</h2>
 
 <table border="1">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Marca</th>
-      <th>Modelo</th>
-      <th>Año</th>
-      <th>Precio</th>
-      <th>Disponible</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody id="tabla-helicopteros"></tbody>
+  <tbody id="tabla"></tbody>
 </table>
 
-<!-- 🔥 IMPORTANTE: SCRIPT -->
-<script src="script.js"></script>
+<script>
+const API = "https://api-helicopteros-1.onrender.com/helicopteros";
+
+document.getElementById("btnAgregar").addEventListener("click", async () => {
+  const marca = document.getElementById("marca").value;
+  const modelo = document.getElementById("modelo").value;
+  const anio = document.getElementById("anio").value;
+  const precio = document.getElementById("precio").value;
+  const disponible = document.getElementById("disponible").checked;
+
+  await fetch(API, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({marca, modelo, anio, precio, disponible})
+  });
+
+  cargar();
+});
+
+async function cargar() {
+  const res = await fetch(API);
+  const data = await res.json();
+
+  const tabla = document.getElementById("tabla");
+  tabla.innerHTML = "";
+
+  data.forEach(h => {
+    tabla.innerHTML += `
+      <tr>
+        <td>${h.id}</td>
+        <td>${h.marca}</td>
+        <td>${h.modelo}</td>
+        <td>${h.anio}</td>
+        <td>${h.precio}</td>
+      </tr>
+    `;
+  });
+}
+
+cargar();
+</script>
 
 </body>
 </html>
