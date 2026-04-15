@@ -3,6 +3,8 @@ let idEditando = null;
 // 🔥 API CORRECTA
 const API_URL = 'https://api-helicopteros-1.onrender.com/helicopteros';
 
+console.log("JS cargado correctamente");
+
 // 🚁 Cargar helicópteros
 async function cargarHelicopteros() {
   try {
