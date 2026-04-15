@@ -2,75 +2,45 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel de Administración | Tienda de Helicópteros </title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
+  <title>Admin - Helicópteros</title>
 </head>
 <body>
-  <header>
-    <h1>Panel del Desarrollador</h1>
-    <nav>
-      <a href="index.html">Inicio</a>
-      <a href="productos.html">Productos</a>
-      <a href="carrito.html">Carrito</a>
-      <a href="favoritos.html">Favoritos</a>
-      <a href="admin.html" class="activo">Admin</a>
-    </nav>
-  </header>
 
-  <main class="admin-container">
-    <section class="formulario">
-      <h2>Agregar / Editar Helicóptero</h2>
-      <form onsubmit="event.preventDefault(); agregarHelicoptero();">
-        <div class="input-group">
-          <label>Marca:</label>
-          <input type="text" id="marca" placeholder="Ejemplo: Airbus">
-        </div>
-        <div class="input-group">
-          <label>Modelo:</label>
-          <input type="text" id="modelo" placeholder="Ejemplo: H130">
-        </div>
-        <div class="input-group">
-          <label>Año:</label>
-          <input type="number" id="anio" placeholder="2023">
-        </div>
-        <div class="input-group">
-          <label>Precio:</label>
-          <input type="number" id="precio" placeholder="1000000">
-        </div>
-        <div class="input-check">
-          <label>Disponible:</label>
-          <input type="checkbox" id="disponible" checked>
-        </div>
+<h1>Panel Admin</h1>
 
-        <button type="submit">Agregar</button>
-      </form>
-    </section>
+<div class="formulario">
+  <input type="text" id="marca" placeholder="Marca">
+  <input type="text" id="modelo" placeholder="Modelo">
+  <input type="number" id="anio" placeholder="Año">
+  <input type="number" id="precio" placeholder="Precio">
+  <label>
+    Disponible
+    <input type="checkbox" id="disponible" checked>
+  </label>
 
-    <section class="tabla-section">
-      <h2>Lista de Helicópteros</h2>
-      <div class="tabla-container">
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Marca</th>
-              <th>Modelo</th>
-              <th>Año</th>
-              <th>Precio</th>
-              <th>Disponible</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody id="tabla-helicopteros">
-            <!-- Aquí se cargan los datos dinámicamente -->
-          </tbody>
-        </table>
-      </div>
-    </section>
-  </main>
+  <!-- 🔥 BOTÓN CORREGIDO -->
+  <button onclick="agregarHelicoptero()">Agregar</button>
+</div>
 
-  <footer>2025 Tienda de Helicópteros Castillo</footer>
+<h2>Lista de Helicópteros</h2>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Marca</th>
+      <th>Modelo</th>
+      <th>Año</th>
+      <th>Precio</th>
+      <th>Disponible</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody id="tabla-helicopteros"></tbody>
+</table>
+
+<!-- 🔥 IMPORTANTE: SCRIPT -->
+<script src="script.js"></script>
+
 </body>
 </html>

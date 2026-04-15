@@ -1,32 +1,39 @@
 let idEditando = null;
 
-// ✅ TU API CORRECTA (AQUÍ ESTÁ LA CLAVE)
+// 🔥 API CORRECTA
 const API_URL = 'https://api-helicopteros-1.onrender.com/helicopteros';
 
-// 🚁 Cargar lista de helicópteros
+// 🚁 Cargar helicópteros
 async function cargarHelicopteros() {
-  const res = await fetch(API_URL);
-  const data = await res.json();
+  try {
+    const res = await fetch(API_URL);
+    const data = await res.json();
 
-  const tabla = document.getElementById('tabla-helicopteros');
-  tabla.innerHTML = '';
+    const tabla = document.getElementById('tabla-helicopteros');
+    tabla.innerHTML = '';
 
-  data.forEach(h => {
-    const fila = document.createElement('tr');
-    fila.innerHTML = `
-      <td>${h.id}</td>
-      <td>${h.marca || ''}</td>
-      <td>${h.modelo || ''}</td>
-      <td>${h.anio || ''}</td>
-      <td>$${h.precio ? Number(h.precio).toLocaleString() : ''}</td>
-      <td>${h.disponible ? 'Disponible' : 'No Disponible'}</td>
-      <td>
-        <button onclick="editarHelicoptero(${h.id}, '${h.marca}', '${h.modelo}', ${h.anio}, ${h.precio}, ${h.disponible})">✏️</button>
-        <button onclick="eliminarHelicoptero(${h.id})">🗑️</button>
-      </td>
-    `;
-    tabla.appendChild(fila);
-  });
+    data.forEach(h => {
+      const fila = document.createElement('tr');
+
+      fila.innerHTML = `
+        <td>${h.id}</td>
+        <td>${h.marca || ''}</td>
+        <td>${h.modelo || ''}</td>
+        <td>${h.anio || ''}</td>
+        <td>$${h.precio ? Number(h.precio).toLocaleString() : ''}</td>
+        <td>${h.disponible ? '✅' : '❌'}</td>
+        <td>
+          <button onclick="editarHelicoptero(${h.id}, '${h.marca}', '${h.modelo}', ${h.anio}, ${h.precio}, ${h.disponible})">✏️</button>
+          <button onclick="eliminarHelicoptero(${h.id})">🗑️</button>
+        </td>
+      `;
+
+      tabla.appendChild(fila);
+    });
+
+  } catch (error) {
+    console.error("Error cargando datos:", error);
+  }
 }
 
 // 🚁 Agregar
@@ -38,7 +45,7 @@ async function agregarHelicoptero() {
   const disponible = document.getElementById('disponible').checked;
 
   if (!marca || !modelo || !anio || !precio) {
-    alert('Por favor llena todos los campos');
+    alert('Llena todos los campos');
     return;
   }
 
@@ -110,4 +117,5 @@ function limpiarFormulario() {
   document.getElementById('disponible').checked = true;
 }
 
+// 🔥 CARGA AUTOMÁTICA
 window.onload = cargarHelicopteros;
