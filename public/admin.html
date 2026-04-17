@@ -8,61 +8,23 @@
 
 <h1>Admin Helicópteros</h1>
 
-<input id="marca" placeholder="Marca">
-<input id="modelo" placeholder="Modelo">
-<input id="anio" placeholder="Año">
-<input id="precio" placeholder="Precio">
-<input type="checkbox" id="disponible" checked> Disponible
+<div class="formulario">
+  <input id="marca" placeholder="Marca">
+  <input id="modelo" placeholder="Modelo">
+  <input id="anio" placeholder="Año">
+  <input id="precio" placeholder="Precio">
+  <input type="checkbox" id="disponible" checked> Disponible
 
-<button id="btnAgregar">Agregar</button>
+  <button onclick="agregarHelicoptero()">Agregar</button>
+</div>
 
 <h2>Lista</h2>
 
 <table border="1">
-  <tbody id="tabla"></tbody>
+  <tbody id="tabla-helicopteros"></tbody>
 </table>
 
-<script>
-const API = "https://api-helicopteros-1.onrender.com/helicopteros";
-
-document.getElementById("btnAgregar").addEventListener("click", async () => {
-  const marca = document.getElementById("marca").value;
-  const modelo = document.getElementById("modelo").value;
-  const anio = document.getElementById("anio").value;
-  const precio = document.getElementById("precio").value;
-  const disponible = document.getElementById("disponible").checked;
-
-  await fetch(API, {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({marca, modelo, anio, precio, disponible})
-  });
-
-  cargar();
-});
-
-async function cargar() {
-  const res = await fetch(API);
-  const data = await res.json();
-
-  const tabla = document.getElementById("tabla");
-  tabla.innerHTML = "";
-
-  data.forEach(h => {
-    tabla.innerHTML += `
-      <tr>
-        <td>${h.id}</td>
-        <td>${h.marca}</td>
-        <td>${h.modelo}</td>
-        <td>${h.anio}</td>
-        <td>${h.precio}</td>
-      </tr>
-    `;
-  });
-}
-
-cargar();
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
